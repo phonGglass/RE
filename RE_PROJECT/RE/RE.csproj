@@ -1,4 +1,4 @@
-﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -88,12 +88,70 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Administrators\Content\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Areas\Administrators\Content\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Areas\Administrators\Content\bootstrap\css\bootstrap.css" />
+    <Content Include="Areas\Administrators\Content\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Areas\Administrators\Content\bootstrap\js\bootstrap.js" />
+    <Content Include="Areas\Administrators\Content\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Areas\Administrators\Content\bootstrap\js\npm.js" />
+    <Content Include="Areas\Administrators\Content\css\animate.css" />
+    <Content Include="Areas\Administrators\Content\css\color\default.css" />
+    <Content Include="Areas\Administrators\Content\css\font\font-awesome.min.css" />
+    <Content Include="Areas\Administrators\Content\css\spinners.css" />
+    <Content Include="Areas\Administrators\Content\css\style.css" />
+    <Content Include="Areas\Administrators\Content\js\custom.js" />
+    <Content Include="Areas\Administrators\Content\js\custom.min.js" />
+    <Content Include="Areas\Administrators\Content\js\dashboard1.js" />
+    <Content Include="Areas\Administrators\Content\js\jquery.slimscroll.js" />
+    <Content Include="Areas\Administrators\Content\js\morris-data.js" />
+    <Content Include="Areas\Administrators\Content\js\toastr.js" />
+    <Content Include="Areas\Administrators\Content\js\waves.js" />
+    <Content Include="Areas\Administrators\Plugin\chartist-js\chartist-plugin-tooltip.css" />
+    <Content Include="Areas\Administrators\Plugin\chartist-js\chartist-plugin-tooltip.min.js" />
+    <Content Include="Areas\Administrators\Plugin\chartist-js\chartist.min.css" />
+    <Content Include="Areas\Administrators\Plugin\chartist-js\chartist.min.js" />
+    <Content Include="Areas\Administrators\Plugin\counterup\jquery.counterup.min.js" />
+    <Content Include="Areas\Administrators\Plugin\image\logos\admin-logo-dark.png" />
+    <Content Include="Areas\Administrators\Plugin\image\logos\admin-logo.png" />
+    <Content Include="Areas\Administrators\Plugin\image\logos\admin-text-dark.png" />
+    <Content Include="Areas\Administrators\Plugin\image\logos\admin-text.png" />
+    <Content Include="Areas\Administrators\Plugin\image\logos\favicon.png" />
+    <Content Include="Areas\Administrators\Plugin\image\users\arijit.jpg" />
+    <Content Include="Areas\Administrators\Plugin\image\users\genu.jpg" />
+    <Content Include="Areas\Administrators\Plugin\image\users\govinda.jpg" />
+    <Content Include="Areas\Administrators\Plugin\image\users\hritik.jpg" />
+    <Content Include="Areas\Administrators\Plugin\image\users\pawandeep.jpg" />
+    <Content Include="Areas\Administrators\Plugin\image\users\ritesh.jpg" />
+    <Content Include="Areas\Administrators\Plugin\image\users\sonu.jpg" />
+    <Content Include="Areas\Administrators\Plugin\image\users\varun.jpg" />
+    <Content Include="Areas\Administrators\Plugin\jquery-sparkline\jquery.sparkline.min.js" />
+    <Content Include="Areas\Administrators\Plugin\jquery\jquery.min.js" />
+    <Content Include="Areas\Administrators\Plugin\morrisjs\morris.css" />
+    <Content Include="Areas\Administrators\Plugin\morrisjs\morris.js" />
+    <Content Include="Areas\Administrators\Plugin\morrisjs\morris.min.js" />
+    <Content Include="Areas\Administrators\Plugin\sidebar-nav\sidebar-nav.css" />
+    <Content Include="Areas\Administrators\Plugin\sidebar-nav\sidebar-nav.js" />
+    <Content Include="Areas\Administrators\Plugin\sidebar-nav\sidebar-nav.min.css" />
+    <Content Include="Areas\Administrators\Plugin\sidebar-nav\sidebar-nav.min.js" />
+    <Content Include="Areas\Administrators\Plugin\toast-master\jquery.toast.css" />
+    <Content Include="Areas\Administrators\Plugin\toast-master\jquery.toast.js" />
+    <Content Include="Areas\Administrators\Plugin\waypoints\jquery.waypoints.js" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Administrators\Views\Dashboard\Index.cshtml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Administrators\AdministratorsAreaRegistration.cs" />
+    <Compile Include="Areas\Administrators\Controllers\Dashboard.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -102,7 +160,17 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="Areas\Administrators\Views\web.config" />
+    <Content Include="Areas\Administrators\Content\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="Areas\Administrators\Content\bootstrap\css\bootstrap-theme.min.css.map" />
+    <Content Include="Areas\Administrators\Content\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Areas\Administrators\Content\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Areas\Administrators\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Administrators\Views\Shared\_Layout.cshtml" />
     <None Include="packages.config" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -112,10 +180,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Administrators\Controllers\" />
     <Folder Include="Areas\Administrators\Models\" />
-    <Folder Include="Areas\Administrators\Views\Shared\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
