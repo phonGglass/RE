@@ -1,0 +1,90 @@
+﻿@model IEnumerable<RE.Models.ACCOUNT>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Administrators/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">QUẢN LÝ TÀI KHOẢN</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <a href="~/Administrators/ACCOUNTs/create" class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Tạo Tài khoản</a>   
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <!-- ============================================================== -->
+    <!-- Different data widgets -->
+    <!-- ============================================================== -->
+    <!-- .row -->
+    <!--/.row -->
+    <!--row -->
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+            <div class="white-box">
+            
+                <div class="table-responsive">
+                    <table class="table text-left">
+                        <tr>
+                            <th>
+                               Tài khoản
+                            </th>
+                            <th>
+                                Mật khẩu
+                            </th>
+                            <th>
+                                SĐT
+                            </th>
+                            <th>
+                                Email
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.zaloLink)
+                            </th>
+
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.ActionLink(item.userName, "Details", new { id = item.accID })
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.passWords)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.phone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.email)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.zaloLink)
+                                </td>
+                                <td>
+
+                                    <a href="~/Administrators/accounts/Edit/@item.accID" class="btn btn-primary">
+                                        <i class="far fa-edit"></i>
+                                    </a>
+
+                                    <a href="~/Administrators/accounts/Delete/@item.accID" class="btn btn-danger">
+                                        <i class="far fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

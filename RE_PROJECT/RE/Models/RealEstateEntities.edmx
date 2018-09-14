@@ -1,0 +1,816 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RealEstateModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ACCOUNT">
+          <Key>
+            <PropertyRef Name="accID" />
+          </Key>
+          <Property Name="accID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userName" Type="nvarchar" MaxLength="100" />
+          <Property Name="passWords" Type="nvarchar" MaxLength="100" />
+          <Property Name="phone" Type="nvarchar" MaxLength="100" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+          <Property Name="emailBackup1" Type="nvarchar" MaxLength="100" />
+          <Property Name="emailBackup2" Type="nvarchar" MaxLength="100" />
+          <Property Name="zaloLink" Type="nvarchar" MaxLength="500" />
+          <Property Name="session" Type="int" />
+        </EntityType>
+        <EntityType Name="ENTERTAINMENT">
+          <Key>
+            <PropertyRef Name="entertainmentID" />
+          </Key>
+          <Property Name="entertainmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="images" Type="nvarchar" MaxLength="500" />
+          <Property Name="descriptions" Type="nvarchar" MaxLength="3000" />
+        </EntityType>
+        <EntityType Name="EVENT">
+          <Key>
+            <PropertyRef Name="eventID" />
+          </Key>
+          <Property Name="eventID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="images" Type="nvarchar" MaxLength="500" />
+          <Property Name="descriptions" Type="nvarchar" MaxLength="3000" />
+        </EntityType>
+        <EntityType Name="FAMILY">
+          <Key>
+            <PropertyRef Name="familyID" />
+          </Key>
+          <Property Name="familyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="images" Type="nvarchar" MaxLength="500" />
+          <Property Name="descriptions" Type="nvarchar" MaxLength="3000" />
+        </EntityType>
+        <EntityType Name="INVEST">
+          <Key>
+            <PropertyRef Name="investID" />
+          </Key>
+          <Property Name="investID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="images" Type="nvarchar" MaxLength="500" />
+          <Property Name="descriptions" Type="nvarchar" MaxLength="3000" />
+        </EntityType>
+        <EntityType Name="PRODUCTDETAIL">
+          <Key>
+            <PropertyRef Name="productDetailID" />
+          </Key>
+          <Property Name="productDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productName" Type="nvarchar" MaxLength="500" />
+          <Property Name="images" Type="nvarchar" MaxLength="500" />
+          <Property Name="descriptions" Type="nvarchar" MaxLength="3000" />
+        </EntityType>
+        <EntityType Name="PRODUCTINFO">
+          <Key>
+            <PropertyRef Name="productInfoID" />
+          </Key>
+          <Property Name="productInfoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productDetailID" Type="int" />
+          <Property Name="stageID" Type="int" />
+        </EntityType>
+        <EntityType Name="PROJECTINFO">
+          <Key>
+            <PropertyRef Name="projectInfoID" />
+          </Key>
+          <Property Name="projectInfoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="projectName" Type="nvarchar" MaxLength="100" />
+          <Property Name="images" Type="nvarchar" MaxLength="500" />
+          <Property Name="video" Type="nvarchar" MaxLength="500" />
+          <Property Name="investor" Type="nvarchar" MaxLength="500" />
+          <Property Name="supplier" Type="nvarchar" MaxLength="500" />
+          <Property Name="typeOfProjectID" Type="int" />
+          <Property Name="investID" Type="int" />
+          <Property Name="familyID" Type="int" />
+          <Property Name="utilitiesID" Type="int" />
+          <Property Name="entertainmentID" Type="int" />
+          <Property Name="eventID" Type="int" />
+          <Property Name="productInfoID" Type="int" />
+          <Property Name="accID" Type="int" />
+          <Property Name="descirption" Type="nvarchar" MaxLength="3000" />
+        </EntityType>
+        <EntityType Name="STAGE">
+          <Key>
+            <PropertyRef Name="stageID" />
+          </Key>
+          <Property Name="stageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="stageName" Type="nvarchar" MaxLength="500" />
+          <Property Name="images" Type="nvarchar" MaxLength="500" />
+          <Property Name="descriptions" Type="nvarchar" MaxLength="3000" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TYPEOFPROJECT">
+          <Key>
+            <PropertyRef Name="typeOfProjectID" />
+          </Key>
+          <Property Name="typeOfProjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productInfoID" Type="int" />
+          <Property Name="stageID" Type="int" />
+        </EntityType>
+        <EntityType Name="UTILITIES">
+          <Key>
+            <PropertyRef Name="utilitiesID" />
+          </Key>
+          <Property Name="utilitiesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="images" Type="nvarchar" MaxLength="500" />
+          <Property Name="descriptions" Type="nvarchar" MaxLength="3000" />
+        </EntityType>
+        <Association Name="fk_1">
+          <End Role="TYPEOFPROJECT" Type="Self.TYPEOFPROJECT" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROJECTINFO" Type="Self.PROJECTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPEOFPROJECT">
+              <PropertyRef Name="typeOfProjectID" />
+            </Principal>
+            <Dependent Role="PROJECTINFO">
+              <PropertyRef Name="typeOfProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_2">
+          <End Role="INVEST" Type="Self.INVEST" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROJECTINFO" Type="Self.PROJECTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INVEST">
+              <PropertyRef Name="investID" />
+            </Principal>
+            <Dependent Role="PROJECTINFO">
+              <PropertyRef Name="investID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_3">
+          <End Role="FAMILY" Type="Self.FAMILY" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROJECTINFO" Type="Self.PROJECTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FAMILY">
+              <PropertyRef Name="familyID" />
+            </Principal>
+            <Dependent Role="PROJECTINFO">
+              <PropertyRef Name="familyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_4">
+          <End Role="UTILITIES" Type="Self.UTILITIES" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROJECTINFO" Type="Self.PROJECTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILITIES">
+              <PropertyRef Name="utilitiesID" />
+            </Principal>
+            <Dependent Role="PROJECTINFO">
+              <PropertyRef Name="utilitiesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_5">
+          <End Role="ENTERTAINMENT" Type="Self.ENTERTAINMENT" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROJECTINFO" Type="Self.PROJECTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ENTERTAINMENT">
+              <PropertyRef Name="entertainmentID" />
+            </Principal>
+            <Dependent Role="PROJECTINFO">
+              <PropertyRef Name="entertainmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_6">
+          <End Role="EVENT" Type="Self.EVENT" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROJECTINFO" Type="Self.PROJECTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVENT">
+              <PropertyRef Name="eventID" />
+            </Principal>
+            <Dependent Role="PROJECTINFO">
+              <PropertyRef Name="eventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_7">
+          <End Role="PRODUCTINFO" Type="Self.PRODUCTINFO" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROJECTINFO" Type="Self.PROJECTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTINFO">
+              <PropertyRef Name="productInfoID" />
+            </Principal>
+            <Dependent Role="PROJECTINFO">
+              <PropertyRef Name="productInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_8">
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROJECTINFO" Type="Self.PROJECTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="accID" />
+            </Principal>
+            <Dependent Role="PROJECTINFO">
+              <PropertyRef Name="accID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_proDe">
+          <End Role="PRODUCTDETAIL" Type="Self.PRODUCTDETAIL" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PRODUCTINFO" Type="Self.PRODUCTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTDETAIL">
+              <PropertyRef Name="productDetailID" />
+            </Principal>
+            <Dependent Role="PRODUCTINFO">
+              <PropertyRef Name="productDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_stage">
+          <End Role="STAGE" Type="Self.STAGE" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PRODUCTINFO" Type="Self.PRODUCTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAGE">
+              <PropertyRef Name="stageID" />
+            </Principal>
+            <Dependent Role="PRODUCTINFO">
+              <PropertyRef Name="stageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RealEstateModelStoreContainer">
+          <EntitySet Name="ACCOUNT" EntityType="Self.ACCOUNT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ENTERTAINMENT" EntityType="Self.ENTERTAINMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EVENT" EntityType="Self.EVENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FAMILY" EntityType="Self.FAMILY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INVEST" EntityType="Self.INVEST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTDETAIL" EntityType="Self.PRODUCTDETAIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTINFO" EntityType="Self.PRODUCTINFO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROJECTINFO" EntityType="Self.PROJECTINFO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STAGE" EntityType="Self.STAGE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TYPEOFPROJECT" EntityType="Self.TYPEOFPROJECT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UTILITIES" EntityType="Self.UTILITIES" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_1" Association="Self.fk_1">
+            <End Role="TYPEOFPROJECT" EntitySet="TYPEOFPROJECT" />
+            <End Role="PROJECTINFO" EntitySet="PROJECTINFO" />
+          </AssociationSet>
+          <AssociationSet Name="fk_2" Association="Self.fk_2">
+            <End Role="INVEST" EntitySet="INVEST" />
+            <End Role="PROJECTINFO" EntitySet="PROJECTINFO" />
+          </AssociationSet>
+          <AssociationSet Name="fk_3" Association="Self.fk_3">
+            <End Role="FAMILY" EntitySet="FAMILY" />
+            <End Role="PROJECTINFO" EntitySet="PROJECTINFO" />
+          </AssociationSet>
+          <AssociationSet Name="fk_4" Association="Self.fk_4">
+            <End Role="UTILITIES" EntitySet="UTILITIES" />
+            <End Role="PROJECTINFO" EntitySet="PROJECTINFO" />
+          </AssociationSet>
+          <AssociationSet Name="fk_5" Association="Self.fk_5">
+            <End Role="ENTERTAINMENT" EntitySet="ENTERTAINMENT" />
+            <End Role="PROJECTINFO" EntitySet="PROJECTINFO" />
+          </AssociationSet>
+          <AssociationSet Name="fk_6" Association="Self.fk_6">
+            <End Role="EVENT" EntitySet="EVENT" />
+            <End Role="PROJECTINFO" EntitySet="PROJECTINFO" />
+          </AssociationSet>
+          <AssociationSet Name="fk_7" Association="Self.fk_7">
+            <End Role="PRODUCTINFO" EntitySet="PRODUCTINFO" />
+            <End Role="PROJECTINFO" EntitySet="PROJECTINFO" />
+          </AssociationSet>
+          <AssociationSet Name="fk_8" Association="Self.fk_8">
+            <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+            <End Role="PROJECTINFO" EntitySet="PROJECTINFO" />
+          </AssociationSet>
+          <AssociationSet Name="fk_proDe" Association="Self.fk_proDe">
+            <End Role="PRODUCTDETAIL" EntitySet="PRODUCTDETAIL" />
+            <End Role="PRODUCTINFO" EntitySet="PRODUCTINFO" />
+          </AssociationSet>
+          <AssociationSet Name="fk_stage" Association="Self.fk_stage">
+            <End Role="STAGE" EntitySet="STAGE" />
+            <End Role="PRODUCTINFO" EntitySet="PRODUCTINFO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RealEstateModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ACCOUNT">
+          <Key>
+            <PropertyRef Name="accID" />
+          </Key>
+          <Property Name="accID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="passWords" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="emailBackup1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="emailBackup2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="zaloLink" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="session" Type="Int32" />
+          <NavigationProperty Name="PROJECTINFOes" Relationship="Self.fk_8" FromRole="ACCOUNT" ToRole="PROJECTINFO" />
+        </EntityType>
+        <EntityType Name="ENTERTAINMENT">
+          <Key>
+            <PropertyRef Name="entertainmentID" />
+          </Key>
+          <Property Name="entertainmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="images" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="descriptions" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PROJECTINFOes" Relationship="Self.fk_5" FromRole="ENTERTAINMENT" ToRole="PROJECTINFO" />
+        </EntityType>
+        <EntityType Name="EVENT">
+          <Key>
+            <PropertyRef Name="eventID" />
+          </Key>
+          <Property Name="eventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="images" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="descriptions" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PROJECTINFOes" Relationship="Self.fk_6" FromRole="EVENT" ToRole="PROJECTINFO" />
+        </EntityType>
+        <EntityType Name="FAMILY">
+          <Key>
+            <PropertyRef Name="familyID" />
+          </Key>
+          <Property Name="familyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="images" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="descriptions" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PROJECTINFOes" Relationship="Self.fk_3" FromRole="FAMILY" ToRole="PROJECTINFO" />
+        </EntityType>
+        <EntityType Name="INVEST">
+          <Key>
+            <PropertyRef Name="investID" />
+          </Key>
+          <Property Name="investID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="images" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="descriptions" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PROJECTINFOes" Relationship="Self.fk_2" FromRole="INVEST" ToRole="PROJECTINFO" />
+        </EntityType>
+        <EntityType Name="PRODUCTDETAIL">
+          <Key>
+            <PropertyRef Name="productDetailID" />
+          </Key>
+          <Property Name="productDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="images" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="descriptions" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PRODUCTINFOes" Relationship="Self.fk_proDe" FromRole="PRODUCTDETAIL" ToRole="PRODUCTINFO" />
+        </EntityType>
+        <EntityType Name="PRODUCTINFO">
+          <Key>
+            <PropertyRef Name="productInfoID" />
+          </Key>
+          <Property Name="productInfoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productDetailID" Type="Int32" />
+          <Property Name="stageID" Type="Int32" />
+          <NavigationProperty Name="PRODUCTDETAIL" Relationship="Self.fk_proDe" FromRole="PRODUCTINFO" ToRole="PRODUCTDETAIL" />
+          <NavigationProperty Name="PROJECTINFOes" Relationship="Self.fk_7" FromRole="PRODUCTINFO" ToRole="PROJECTINFO" />
+          <NavigationProperty Name="STAGE" Relationship="Self.fk_stage" FromRole="PRODUCTINFO" ToRole="STAGE" />
+        </EntityType>
+        <EntityType Name="PROJECTINFO">
+          <Key>
+            <PropertyRef Name="projectInfoID" />
+          </Key>
+          <Property Name="projectInfoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="projectName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="images" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="video" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="investor" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="supplier" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="typeOfProjectID" Type="Int32" />
+          <Property Name="investID" Type="Int32" />
+          <Property Name="familyID" Type="Int32" />
+          <Property Name="utilitiesID" Type="Int32" />
+          <Property Name="entertainmentID" Type="Int32" />
+          <Property Name="eventID" Type="Int32" />
+          <Property Name="productInfoID" Type="Int32" />
+          <Property Name="accID" Type="Int32" />
+          <Property Name="descirption" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ACCOUNT" Relationship="Self.fk_8" FromRole="PROJECTINFO" ToRole="ACCOUNT" />
+          <NavigationProperty Name="ENTERTAINMENT" Relationship="Self.fk_5" FromRole="PROJECTINFO" ToRole="ENTERTAINMENT" />
+          <NavigationProperty Name="EVENT" Relationship="Self.fk_6" FromRole="PROJECTINFO" ToRole="EVENT" />
+          <NavigationProperty Name="FAMILY" Relationship="Self.fk_3" FromRole="PROJECTINFO" ToRole="FAMILY" />
+          <NavigationProperty Name="INVEST" Relationship="Self.fk_2" FromRole="PROJECTINFO" ToRole="INVEST" />
+          <NavigationProperty Name="PRODUCTINFO" Relationship="Self.fk_7" FromRole="PROJECTINFO" ToRole="PRODUCTINFO" />
+          <NavigationProperty Name="TYPEOFPROJECT" Relationship="Self.fk_1" FromRole="PROJECTINFO" ToRole="TYPEOFPROJECT" />
+          <NavigationProperty Name="UTILITy" Relationship="Self.fk_4" FromRole="PROJECTINFO" ToRole="UTILITIES" />
+        </EntityType>
+        <EntityType Name="STAGE">
+          <Key>
+            <PropertyRef Name="stageID" />
+          </Key>
+          <Property Name="stageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="stageName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="images" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="descriptions" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PRODUCTINFOes" Relationship="Self.fk_stage" FromRole="STAGE" ToRole="PRODUCTINFO" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TYPEOFPROJECT">
+          <Key>
+            <PropertyRef Name="typeOfProjectID" />
+          </Key>
+          <Property Name="typeOfProjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productInfoID" Type="Int32" />
+          <Property Name="stageID" Type="Int32" />
+          <NavigationProperty Name="PROJECTINFOes" Relationship="Self.fk_1" FromRole="TYPEOFPROJECT" ToRole="PROJECTINFO" />
+        </EntityType>
+        <EntityType Name="UTILITy">
+          <Key>
+            <PropertyRef Name="utilitiesID" />
+          </Key>
+          <Property Name="utilitiesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="images" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="descriptions" Type="String" MaxLength="3000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PROJECTINFOes" Relationship="Self.fk_4" FromRole="UTILITIES" ToRole="PROJECTINFO" />
+        </EntityType>
+        <Association Name="fk_8">
+          <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROJECTINFO" Type="Self.PROJECTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ACCOUNT">
+              <PropertyRef Name="accID" />
+            </Principal>
+            <Dependent Role="PROJECTINFO">
+              <PropertyRef Name="accID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_5">
+          <End Role="ENTERTAINMENT" Type="Self.ENTERTAINMENT" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROJECTINFO" Type="Self.PROJECTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ENTERTAINMENT">
+              <PropertyRef Name="entertainmentID" />
+            </Principal>
+            <Dependent Role="PROJECTINFO">
+              <PropertyRef Name="entertainmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_6">
+          <End Role="EVENT" Type="Self.EVENT" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROJECTINFO" Type="Self.PROJECTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVENT">
+              <PropertyRef Name="eventID" />
+            </Principal>
+            <Dependent Role="PROJECTINFO">
+              <PropertyRef Name="eventID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_3">
+          <End Role="FAMILY" Type="Self.FAMILY" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROJECTINFO" Type="Self.PROJECTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FAMILY">
+              <PropertyRef Name="familyID" />
+            </Principal>
+            <Dependent Role="PROJECTINFO">
+              <PropertyRef Name="familyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_2">
+          <End Role="INVEST" Type="Self.INVEST" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROJECTINFO" Type="Self.PROJECTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INVEST">
+              <PropertyRef Name="investID" />
+            </Principal>
+            <Dependent Role="PROJECTINFO">
+              <PropertyRef Name="investID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_proDe">
+          <End Role="PRODUCTDETAIL" Type="Self.PRODUCTDETAIL" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PRODUCTINFO" Type="Self.PRODUCTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTDETAIL">
+              <PropertyRef Name="productDetailID" />
+            </Principal>
+            <Dependent Role="PRODUCTINFO">
+              <PropertyRef Name="productDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_7">
+          <End Role="PRODUCTINFO" Type="Self.PRODUCTINFO" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROJECTINFO" Type="Self.PROJECTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTINFO">
+              <PropertyRef Name="productInfoID" />
+            </Principal>
+            <Dependent Role="PROJECTINFO">
+              <PropertyRef Name="productInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_stage">
+          <End Role="STAGE" Type="Self.STAGE" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PRODUCTINFO" Type="Self.PRODUCTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAGE">
+              <PropertyRef Name="stageID" />
+            </Principal>
+            <Dependent Role="PRODUCTINFO">
+              <PropertyRef Name="stageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_1">
+          <End Role="TYPEOFPROJECT" Type="Self.TYPEOFPROJECT" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROJECTINFO" Type="Self.PROJECTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPEOFPROJECT">
+              <PropertyRef Name="typeOfProjectID" />
+            </Principal>
+            <Dependent Role="PROJECTINFO">
+              <PropertyRef Name="typeOfProjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_4">
+          <End Role="UTILITIES" Type="Self.UTILITy" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PROJECTINFO" Type="Self.PROJECTINFO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UTILITIES">
+              <PropertyRef Name="utilitiesID" />
+            </Principal>
+            <Dependent Role="PROJECTINFO">
+              <PropertyRef Name="utilitiesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RealEstateEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ACCOUNTs" EntityType="Self.ACCOUNT" />
+          <EntitySet Name="ENTERTAINMENTs" EntityType="Self.ENTERTAINMENT" />
+          <EntitySet Name="EVENTs" EntityType="Self.EVENT" />
+          <EntitySet Name="FAMILies" EntityType="Self.FAMILY" />
+          <EntitySet Name="INVESTs" EntityType="Self.INVEST" />
+          <EntitySet Name="PRODUCTDETAILs" EntityType="Self.PRODUCTDETAIL" />
+          <EntitySet Name="PRODUCTINFOes" EntityType="Self.PRODUCTINFO" />
+          <EntitySet Name="PROJECTINFOes" EntityType="Self.PROJECTINFO" />
+          <EntitySet Name="STAGEs" EntityType="Self.STAGE" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TYPEOFPROJECTs" EntityType="Self.TYPEOFPROJECT" />
+          <EntitySet Name="UTILITIES" EntityType="Self.UTILITy" />
+          <AssociationSet Name="fk_8" Association="Self.fk_8">
+            <End Role="ACCOUNT" EntitySet="ACCOUNTs" />
+            <End Role="PROJECTINFO" EntitySet="PROJECTINFOes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_5" Association="Self.fk_5">
+            <End Role="ENTERTAINMENT" EntitySet="ENTERTAINMENTs" />
+            <End Role="PROJECTINFO" EntitySet="PROJECTINFOes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_6" Association="Self.fk_6">
+            <End Role="EVENT" EntitySet="EVENTs" />
+            <End Role="PROJECTINFO" EntitySet="PROJECTINFOes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_3" Association="Self.fk_3">
+            <End Role="FAMILY" EntitySet="FAMILies" />
+            <End Role="PROJECTINFO" EntitySet="PROJECTINFOes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_2" Association="Self.fk_2">
+            <End Role="INVEST" EntitySet="INVESTs" />
+            <End Role="PROJECTINFO" EntitySet="PROJECTINFOes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_proDe" Association="Self.fk_proDe">
+            <End Role="PRODUCTDETAIL" EntitySet="PRODUCTDETAILs" />
+            <End Role="PRODUCTINFO" EntitySet="PRODUCTINFOes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_7" Association="Self.fk_7">
+            <End Role="PRODUCTINFO" EntitySet="PRODUCTINFOes" />
+            <End Role="PROJECTINFO" EntitySet="PROJECTINFOes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_stage" Association="Self.fk_stage">
+            <End Role="STAGE" EntitySet="STAGEs" />
+            <End Role="PRODUCTINFO" EntitySet="PRODUCTINFOes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_1" Association="Self.fk_1">
+            <End Role="TYPEOFPROJECT" EntitySet="TYPEOFPROJECTs" />
+            <End Role="PROJECTINFO" EntitySet="PROJECTINFOes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_4" Association="Self.fk_4">
+            <End Role="UTILITIES" EntitySet="UTILITIES" />
+            <End Role="PROJECTINFO" EntitySet="PROJECTINFOes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RealEstateModelStoreContainer" CdmEntityContainer="RealEstateEntities">
+          <EntitySetMapping Name="ACCOUNTs">
+            <EntityTypeMapping TypeName="RealEstateModel.ACCOUNT">
+              <MappingFragment StoreEntitySet="ACCOUNT">
+                <ScalarProperty Name="accID" ColumnName="accID" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="passWords" ColumnName="passWords" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="emailBackup1" ColumnName="emailBackup1" />
+                <ScalarProperty Name="emailBackup2" ColumnName="emailBackup2" />
+                <ScalarProperty Name="zaloLink" ColumnName="zaloLink" />
+                <ScalarProperty Name="session" ColumnName="session" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ENTERTAINMENTs">
+            <EntityTypeMapping TypeName="RealEstateModel.ENTERTAINMENT">
+              <MappingFragment StoreEntitySet="ENTERTAINMENT">
+                <ScalarProperty Name="entertainmentID" ColumnName="entertainmentID" />
+                <ScalarProperty Name="images" ColumnName="images" />
+                <ScalarProperty Name="descriptions" ColumnName="descriptions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EVENTs">
+            <EntityTypeMapping TypeName="RealEstateModel.EVENT">
+              <MappingFragment StoreEntitySet="EVENT">
+                <ScalarProperty Name="eventID" ColumnName="eventID" />
+                <ScalarProperty Name="images" ColumnName="images" />
+                <ScalarProperty Name="descriptions" ColumnName="descriptions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FAMILies">
+            <EntityTypeMapping TypeName="RealEstateModel.FAMILY">
+              <MappingFragment StoreEntitySet="FAMILY">
+                <ScalarProperty Name="familyID" ColumnName="familyID" />
+                <ScalarProperty Name="images" ColumnName="images" />
+                <ScalarProperty Name="descriptions" ColumnName="descriptions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INVESTs">
+            <EntityTypeMapping TypeName="RealEstateModel.INVEST">
+              <MappingFragment StoreEntitySet="INVEST">
+                <ScalarProperty Name="investID" ColumnName="investID" />
+                <ScalarProperty Name="images" ColumnName="images" />
+                <ScalarProperty Name="descriptions" ColumnName="descriptions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTDETAILs">
+            <EntityTypeMapping TypeName="RealEstateModel.PRODUCTDETAIL">
+              <MappingFragment StoreEntitySet="PRODUCTDETAIL">
+                <ScalarProperty Name="productDetailID" ColumnName="productDetailID" />
+                <ScalarProperty Name="productName" ColumnName="productName" />
+                <ScalarProperty Name="images" ColumnName="images" />
+                <ScalarProperty Name="descriptions" ColumnName="descriptions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTINFOes">
+            <EntityTypeMapping TypeName="RealEstateModel.PRODUCTINFO">
+              <MappingFragment StoreEntitySet="PRODUCTINFO">
+                <ScalarProperty Name="productInfoID" ColumnName="productInfoID" />
+                <ScalarProperty Name="productDetailID" ColumnName="productDetailID" />
+                <ScalarProperty Name="stageID" ColumnName="stageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PROJECTINFOes">
+            <EntityTypeMapping TypeName="RealEstateModel.PROJECTINFO">
+              <MappingFragment StoreEntitySet="PROJECTINFO">
+                <ScalarProperty Name="projectInfoID" ColumnName="projectInfoID" />
+                <ScalarProperty Name="projectName" ColumnName="projectName" />
+                <ScalarProperty Name="images" ColumnName="images" />
+                <ScalarProperty Name="video" ColumnName="video" />
+                <ScalarProperty Name="investor" ColumnName="investor" />
+                <ScalarProperty Name="supplier" ColumnName="supplier" />
+                <ScalarProperty Name="typeOfProjectID" ColumnName="typeOfProjectID" />
+                <ScalarProperty Name="investID" ColumnName="investID" />
+                <ScalarProperty Name="familyID" ColumnName="familyID" />
+                <ScalarProperty Name="utilitiesID" ColumnName="utilitiesID" />
+                <ScalarProperty Name="entertainmentID" ColumnName="entertainmentID" />
+                <ScalarProperty Name="eventID" ColumnName="eventID" />
+                <ScalarProperty Name="productInfoID" ColumnName="productInfoID" />
+                <ScalarProperty Name="accID" ColumnName="accID" />
+                <ScalarProperty Name="descirption" ColumnName="descirption" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STAGEs">
+            <EntityTypeMapping TypeName="RealEstateModel.STAGE">
+              <MappingFragment StoreEntitySet="STAGE">
+                <ScalarProperty Name="stageID" ColumnName="stageID" />
+                <ScalarProperty Name="stageName" ColumnName="stageName" />
+                <ScalarProperty Name="images" ColumnName="images" />
+                <ScalarProperty Name="descriptions" ColumnName="descriptions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="RealEstateModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TYPEOFPROJECTs">
+            <EntityTypeMapping TypeName="RealEstateModel.TYPEOFPROJECT">
+              <MappingFragment StoreEntitySet="TYPEOFPROJECT">
+                <ScalarProperty Name="typeOfProjectID" ColumnName="typeOfProjectID" />
+                <ScalarProperty Name="productInfoID" ColumnName="productInfoID" />
+                <ScalarProperty Name="stageID" ColumnName="stageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UTILITIES">
+            <EntityTypeMapping TypeName="RealEstateModel.UTILITy">
+              <MappingFragment StoreEntitySet="UTILITIES">
+                <ScalarProperty Name="utilitiesID" ColumnName="utilitiesID" />
+                <ScalarProperty Name="images" ColumnName="images" />
+                <ScalarProperty Name="descriptions" ColumnName="descriptions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

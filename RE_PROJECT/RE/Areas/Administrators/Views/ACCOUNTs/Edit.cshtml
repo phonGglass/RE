@@ -1,0 +1,119 @@
+﻿@model RE.Models.ACCOUNT
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Administrators/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">QUẢN LÝ TÀI KHOẢN</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <ol class="breadcrumb">
+                <li><a href="~/Administrators/accounts/Index">QUẢN LÝ TÀI KHOẢN</a></li>
+                <li class="active">Chỉnh sửa thông tin tài khoản</li>
+            </ol>
+        </div>
+    </div>
+    <!-- /.row -->
+    <!-- .row -->
+    <div class="row">
+        <div class="col-md-4 col-xs-12">
+            <div class="white-box">
+                <div class="user-bg">
+                    <img width="100%" alt="user" src="../plugins/images/large/img1.jpg">
+                    <div class="overlay-box">
+                        <div class="user-content">
+                            <a href="javascript:void(0)"><img src="../plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img"></a>
+                            <h4 class="text-white">User Name</h4>
+                            <h5 class="text-white">info@myadmin.com</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-btm-box">
+                    <div class="col-md-4 col-sm-4 text-center">
+                        <p class="text-purple"><i class="ti-facebook"></i></p>
+                        <h1>258</h1>
+                    </div>
+                    <div class="col-md-4 col-sm-4 text-center">
+                        <p class="text-blue"><i class="ti-twitter"></i></p>
+                        <h1>125</h1>
+                    </div>
+                    <div class="col-md-4 col-sm-4 text-center">
+                        <p class="text-danger"><i class="ti-dribbble"></i></p>
+                        <h1>556</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-xs-12">
+            <div class="white-box">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal form-material">
+                   
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.accID)
+
+                        <div class="form-group">
+                            @Html.Label("Tài khoản", new { @class = "col-md-12" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.userName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.userName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("SĐT", new { @class = "col-md-12" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Email", new { @class = "col-md-12" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Email Backup 1", new { @class = "col-md-12" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.emailBackup1, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.emailBackup1, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Email Backup 2", new { @class = "col-md-12" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.emailBackup2, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.emailBackup2, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Zalo", new { @class = "col-md-12" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.zaloLink, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.zaloLink, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class=" col-md-10">
+                                <input type="submit" value="Cập nhật" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

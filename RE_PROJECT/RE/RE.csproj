@@ -1,4 +1,4 @@
-<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -43,7 +43,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -100,6 +108,7 @@
     <Content Include="Areas\Administrators\Content\css\font\font-awesome.min.css" />
     <Content Include="Areas\Administrators\Content\css\spinners.css" />
     <Content Include="Areas\Administrators\Content\css\style.css" />
+    <Content Include="Areas\Administrators\Content\css\StyleAdmin.css" />
     <Content Include="Areas\Administrators\Content\js\custom.js" />
     <Content Include="Areas\Administrators\Content\js\custom.min.js" />
     <Content Include="Areas\Administrators\Content\js\dashboard1.js" />
@@ -138,9 +147,31 @@
     <Content Include="Areas\Administrators\Plugin\toast-master\jquery.toast.js" />
     <Content Include="Areas\Administrators\Plugin\waypoints\jquery.waypoints.js" />
     <Content Include="Global.asax" />
+    <Content Include="Models\RealEstateEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RealEstateEntities.edmx</DependentUpon>
+      <LastGenOutput>RealEstateEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\RealEstateEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RealEstateEntities.edmx</DependentUpon>
+      <LastGenOutput>RealEstateEntities.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Administrators\Views\Dashboards\Index.cshtml" />
+    <EntityDeploy Include="Models\RealEstateEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RealEstateEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\RealEstateEntities.edmx.diagram">
+      <DependentUpon>RealEstateEntities.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\Administrators\Views\ACCOUNTs\Create.cshtml" />
+    <Content Include="Areas\Administrators\Views\ACCOUNTs\Delete.cshtml" />
+    <Content Include="Areas\Administrators\Views\ACCOUNTs\Details.cshtml" />
+    <Content Include="Areas\Administrators\Views\ACCOUNTs\Edit.cshtml" />
+    <Content Include="Areas\Administrators\Views\ACCOUNTs\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -150,10 +181,62 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Administrators\AdministratorsAreaRegistration.cs" />
+    <Compile Include="Areas\Administrators\Controllers\ACCOUNTsController.cs" />
     <Compile Include="Areas\Administrators\Controllers\DashboardsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ACCOUNT.cs">
+      <DependentUpon>RealEstateEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ENTERTAINMENT.cs">
+      <DependentUpon>RealEstateEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EVENT.cs">
+      <DependentUpon>RealEstateEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FAMILY.cs">
+      <DependentUpon>RealEstateEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\INVEST.cs">
+      <DependentUpon>RealEstateEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PRODUCTDETAIL.cs">
+      <DependentUpon>RealEstateEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PRODUCTINFO.cs">
+      <DependentUpon>RealEstateEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PROJECTINFO.cs">
+      <DependentUpon>RealEstateEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RealEstateEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RealEstateEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RealEstateEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RealEstateEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RealEstateEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RealEstateEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\STAGE.cs">
+      <DependentUpon>RealEstateEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>RealEstateEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TYPEOFPROJECT.cs">
+      <DependentUpon>RealEstateEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UTILITy.cs">
+      <DependentUpon>RealEstateEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -181,7 +264,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administrators\Models\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

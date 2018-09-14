@@ -1,0 +1,5 @@
+﻿body {
+}
+.borderless td, .borderless th {
+    border: none;
+}

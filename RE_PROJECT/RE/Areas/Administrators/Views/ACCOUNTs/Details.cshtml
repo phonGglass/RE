@@ -1,0 +1,106 @@
+﻿@model RE.Models.ACCOUNT
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Administrators/Views/Shared/_Layout.cshtml";
+}
+@section css
+{
+<link href="~/Areas/Administrators/Content/css/StyleAdmin.css" rel="stylesheet" />
+   
+}
+<div class="container-fluid">
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">QUẢN LÝ TÀI KHOẢN</h4>
+        </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+            <ol class="breadcrumb">
+                <li><a href="~/Administrators/accounts/Index">QUẢN LÝ TÀI KHOẢN</a></li>
+                <li class="active">Thông tin tài khoản</li>
+            </ol>
+        </div>
+    </div>
+    <!-- /.row -->
+    <!-- .row -->
+    <div class="row">
+        <div class="col-md-4 col-xs-12">
+            <div class="white-box">
+                <div class="user-bg">
+                    <img width="100%" alt="user" src="../plugins/images/large/img1.jpg">
+                    <div class="overlay-box">
+                        <div class="user-content">
+                            <a href="javascript:void(0)"><img src="../plugins/images/users/genu.jpg" class="thumb-lg img-circle" alt="img"></a>
+                            <h4 class="text-white">User Name</h4>
+                            <h5 class="text-white">info@myadmin.com</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-btm-box">
+                    <div class="col-md-4 col-sm-4 text-center">
+                        <p class="text-purple"><i class="ti-facebook"></i></p>
+                        <h1>258</h1>
+                    </div>
+                    <div class="col-md-4 col-sm-4 text-center">
+                        <p class="text-blue"><i class="ti-twitter"></i></p>
+                        <h1>125</h1>
+                    </div>
+                    <div class="col-md-4 col-sm-4 text-center">
+                        <p class="text-danger"><i class="ti-dribbble"></i></p>
+                        <h1>556</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-xs-12">
+            <div class="white-box">
+                <table class="table table-hover borderless ">
+                    <tr>
+                        <td>Tài Khoản</td>
+                        <td>@Model.userName</td>
+                    </tr>
+
+                    <tr>
+                        <td>SĐT</td>
+                        <td>@Model.phone</td>
+                    </tr>
+
+                    <tr>
+                        <td>Email</td>
+                        <td>@Model.email</td>
+                    </tr>
+
+                    <tr>
+                        <td>Email Phục hồi 1</td>
+                        <td>@Model.emailBackup1</td>
+                    </tr>
+
+                    <tr>
+                        <td>Email Phục hồi 2</td>
+                        <td>@Model.emailBackup2</td>
+                    </tr>
+                    <tr>
+                        <td>Zalo</td>
+                        <td>@Model.zaloLink</td>
+                    </tr>
+                </table>
+
+
+                <p>
+                    <a href="~/Administrators/accounts/Edit/@Model.accID" class="btn btn-primary">
+                        <i class="far fa-edit"></i>
+                    </a>
+
+                    <a href="~/Administrators/accounts/Delete/@Model.accID" class="btn btn-danger">
+                        <i class="far fa-trash"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
