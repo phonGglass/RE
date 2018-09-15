@@ -10,7 +10,7 @@
             <h4 class="page-title">QUẢN LÝ TÀI KHOẢN</h4>
         </div>
         <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-            <a href="~/Administrators/ACCOUNTs/create" class="btn btn-danger pull-right m-l-20 hidden-xs hidden-sm waves-effect waves-light">Tạo Tài khoản</a>   
+            <a href="~/Administrators/ACCOUNTs/create" class="btn btn-danger pull-right m-l-20 waves-effect waves-light">Tạo Tài khoản</a>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -25,12 +25,12 @@
     <div class="row">
         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
             <div class="white-box">
-            
+
                 <div class="table-responsive">
                     <table class="table text-left">
                         <tr>
                             <th>
-                               Tài khoản
+                                Tài khoản
                             </th>
                             <th>
                                 Mật khẩu
@@ -69,13 +69,54 @@
                                 </td>
                                 <td>
 
-                                    <a href="~/Administrators/accounts/Edit/@item.accID" class="btn btn-primary">
-                                        <i class="far fa-edit"></i>
-                                    </a>
 
-                                    <a href="~/Administrators/accounts/Delete/@item.accID" class="btn btn-danger">
-                                        <i class="far fa-trash"></i>
-                                    </a>
+                                    @using (Html.BeginForm("Delete", "accounts", new { id = item.accID }))
+                                    {
+                                        var myModal = "myModal" + item.accID;
+                                        // button delete
+                                        <a href="~/Administrators/accounts/Delete/@item.accID" class="btn btn-danger" data-toggle="modal" data-target="#@myModal">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                        // button edit
+                                        <a href="~/Administrators/accounts/Edit/@item.accID" class="btn btn-primary">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+
+                                        @*Dialog xóa*@
+                                        <div class="modal fade myModal" id="@myModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="ModalLabel">Thông Báo!!!</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Bạn có muốn xóa tài khoản này??
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        @Html.AntiForgeryToken()
+                                                        <div class="form-actions no-color text-center">
+                                                            <button type="submit" class="btn btn-danger " onclick="waitingDialog.show('Đang xử lý...');setTimeout(function () {$('.myModal').modal('hide');}, 0);">
+                                                                Đồng ý
+                                                            </button>
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Hủy</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*Dialog  xóa*@
+                                    }
+
+
+
+
+
+
+
+
                                 </td>
                             </tr>
                         }

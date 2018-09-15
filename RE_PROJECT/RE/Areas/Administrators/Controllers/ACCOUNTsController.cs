@@ -90,19 +90,19 @@ namespace RE.Areas.Administrators.Controllers
         }
 
         // GET: Administrators/ACCOUNTs/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ACCOUNT aCCOUNT = db.ACCOUNTs.Find(id);
-            if (aCCOUNT == null)
-            {
-                return HttpNotFound();
-            }
-            return View(aCCOUNT);
-        }
+        //public ActionResult Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    ACCOUNT aCCOUNT = db.ACCOUNTs.Find(id);
+        //    if (aCCOUNT == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(aCCOUNT);
+        //}
 
         // POST: Administrators/ACCOUNTs/Delete/5
         [HttpPost, ActionName("Delete")]

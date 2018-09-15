@@ -26,29 +26,119 @@
     <!-- fonts CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="~/Areas/Administrators/Content/css/font/font-awesome.min.css" rel="stylesheet" />
-    <link href="~/Areas/Administrators/Content/css/StyleAdmin.css" rel="stylesheet" />
+    <!--custom navbar right css-->
+    <style>
+
+        .overlay {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0, 0.90);
+            overflow-x: hidden;
+            transition: 0.5s;
+        }
+
+        .overlay-content {
+            position: relative;
+            top: 0%;
+            width: 100%;
+            text-align: left;
+            margin-top: 30px;
+        }
+
+        .overlay a {
+            padding-left: 5px;
+            padding: 5px;
+            text-decoration: none;
+            font-size: 15px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+            .overlay a:hover, .overlay a:focus {
+                color: orangered;
+                
+            }
+
+        .overlay {
+            position: absolute;
+            top: 20px;
+            right: 45px;
+            font-size: 60px;
+        }
+
+        .closebtn {
+            top: 50px;
+            position: absolute;
+            right: 45px;
+            font-size: 60px;
+        }
+    </style>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    @RenderSection("css", false)
+
 
 </head>
 <body class="fix-header">
+
     <!-- ============================================================== -->
     <!-- Preloader -->
     <!-- ============================================================== -->
-    <div class="preloader">
-        <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
-        </svg>
-    </div>
+    @*<div class="preloader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+            </svg>
+        </div>*@
     <!-- ============================================================== -->
     <!-- Wrapper -->
     <!-- ============================================================== -->
     <div id="wrapper">
+        <!-- ============================================================== -->
+        <!-- sider bar for phone view -  -->
+        <div id="myNav" class="overlay ">
+            <div class="overlay-content">
+                <div class="sidebar-head">
+                    <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span class="hide-menu">Navigation</span></h3>
+                </div>
+                <ul class="nav" id="side-menu">
+                    <li style="padding: 70px 0 0;">
+                        <a href="~/home/index" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="~/Administrators/accounts/Index" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Quản lý tài khoản</a>
+                    </li>
+                    <li>
+                        <a href="basic-table.html" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Quản lý bài viết</a>
+                    </li>
+                    <li>
+                        <a href="fontawesome.html" class="waves-effect"><i class="fa fa-font fa-fw" aria-hidden="true"></i>Icons</a>
+                    </li>
+                    <li>
+                        <a href="map-google.html" class="waves-effect"><i class="fa fa-globe fa-fw" aria-hidden="true"></i>Google Map</a>
+                    </li>
+                    <li>
+                        <a href="blank.html" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i>Blank Page</a>
+                    </li>
+                    <li>
+                        <a href="404.html" class="waves-effect"><i class="fa fa-info-circle fa-fw" aria-hidden="true"></i>Error 404</a>
+                    </li>
+
+                </ul>
+                <div class="center p-20">
+                    <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank" class="btn btn-danger btn-block waves-effect waves-light">Upgrade to Pro</a>
+                </div>
+
+            </div>
+        </div>
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
@@ -72,9 +162,19 @@
                             <img src="~/Areas/Administrators/Plugin/image/logos/admin-text-dark.png" alt="home" class="light-logo" />
                         </span>
                     </a>
+
                 </div>
+                <ul class="nav navbar-top-links navbar-left pull-left hidden-lg ">
+                    <li>
+                        <a onclick=" openNav()" id="btnOpen"><i class="fa fa-bars"></i></a>
+                        <a onclick=" closeNav()" id="btnClose" style="display:none"><i class="fa fa-bars"></i></a>
+                    </li>
+                </ul>
+
+
                 <!-- /Logo -->
                 <ul class="nav navbar-top-links navbar-right pull-right">
+
                     <li>
                         <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
                             <input type="text" placeholder="Search..." class="form-control"> <a href=""><i class="fa fa-search"></i></a>
@@ -103,10 +203,10 @@
                         <a href="~/home/index" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Dashboard</a>
                     </li>
                     <li>
-                        <a href="~/Administrators/accounts/Index" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
+                        <a href="~/Administrators/accounts/Index" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Quản lý tài khoản</a>
                     </li>
                     <li>
-                        <a href="basic-table.html" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Basic Table</a>
+                        <a href="basic-table.html" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Quản lý bài viết</a>
                     </li>
                     <li>
                         <a href="fontawesome.html" class="waves-effect"><i class="fa fa-font fa-fw" aria-hidden="true"></i>Icons</a>
@@ -170,5 +270,24 @@
     <script src="~/Areas/Administrators/Content/js/custom.js"></script>
     <script src="~/Areas/Administrators/Content/js/dashboard1.js"></script>
     <script src="~/Areas/Administrators/Plugin/toast-master/jquery.toast.js"></script>
+    <!--custom hiden nav bar-->
+    <script src="~/Areas/Administrators/Content/js/Ad.js"></script>
+    <!--custom js for siderbar in phone view-->
+    <script>
+        function openNav() {
+            document.getElementById("myNav").style.width = "50%";
+            document.getElementById("btnOpen").style.display = 'none';
+            document.getElementById("btnClose").style.display = 'block';
+        }
+
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+            document.getElementById("btnOpen").style.display = 'block';
+            document.getElementById("btnClose").style.display = 'none';
+        }
+        function click() {
+            document.getElementById("btn-menu").style.width = "0%";
+        }
+    </script>
 </body>
 </html>
